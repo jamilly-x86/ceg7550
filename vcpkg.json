@@ -1,0 +1,11 @@
+{
+  "name": "ceg7550",
+  "version-string": "2026.26.01",
+  "port-version": 1,
+  "description": "ceg7550 class assignments",
+  "homepage": "https://github.com/jamilly-x86/ceg7550",
+  "dependencies": [
+    "opencv",
+    "opencv4"
+  ]
+}

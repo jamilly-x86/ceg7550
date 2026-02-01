@@ -1,0 +1,176 @@
+{
+    "version": 7,
+    "include": [
+        "config-build-dir.json",
+        "config-debug.json",
+        "config-llvm-cov.json",
+        "config-release.json",
+        "host-arm64-linux.json",
+        "host-x64-linux.json",
+        "target-arm64-linux.json",
+        "target-x64-linux.json",
+        "use-clang.json",
+        "use-gcc.json",
+        "use-msvc.json",
+        "use-ninja.json",
+        "use-vcpkg.json"
+    ],
+    "configurePresets": [
+        {
+            "name": "x64-linux-clang-debug",
+            "inherits": [
+                "host-x64-linux",
+                "target-x64-linux",
+                "config-debug",
+                "config-build-dir",
+                "use-clang",
+                "use-ninja",
+                "use-vcpkg"
+            ]
+        },
+        {
+            "name": "x64-linux-clang-release",
+            "inherits": [
+                "host-x64-linux",
+                "target-x64-linux",
+                "config-release",
+                "config-build-dir",
+                "use-clang",
+                "use-ninja",
+                "use-vcpkg"
+            ]
+        },
+        {
+            "name": "x64-linux-llvm-coverage",
+            "inherits": [
+                "x64-linux-clang-debug",
+                "config-llvm-cov"
+            ]
+        },
+        {
+            "name": "x64-linux-gcc-debug",
+            "inherits": [
+                "host-x64-linux",
+                "target-x64-linux",
+                "config-debug",
+                "config-build-dir",
+                "use-gcc",
+                "use-ninja",
+                "use-vcpkg"
+            ]
+        },
+        {
+            "name": "x64-linux-gcc-release",
+            "inherits": [
+                "host-x64-linux",
+                "target-x64-linux",
+                "config-release",
+                "config-build-dir",
+                "use-gcc",
+                "use-ninja",
+                "use-vcpkg"
+            ]
+        },
+        {
+            "name": "arm64-linux-gcc-debug",
+            "inherits": [
+                "host-arm64-linux",
+                "target-arm64-linux",
+                "config-debug",
+                "config-build-dir",
+                "use-gcc",
+                "use-ninja",
+                "use-vcpkg"
+            ]
+        },
+        {
+            "name": "arm64-linux-gcc-release",
+            "inherits": [
+                "host-arm64-linux",
+                "target-arm64-linux",
+                "config-release",
+                "config-build-dir",
+                "use-gcc",
+                "use-ninja",
+                "use-vcpkg"
+            ]
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "x64-linux-clang-debug",
+            "configurePreset": "x64-linux-clang-debug",
+            "jobs": 8
+        },
+        {
+            "name": "x64-linux-clang-release",
+            "configurePreset": "x64-linux-clang-release",
+            "jobs": 8
+        },
+        {
+            "name": "x64-linux-llvm-coverage",
+            "configurePreset": "x64-linux-llvm-coverage",
+            "jobs": 8
+        },
+        {
+            "name": "x64-linux-gcc-debug",
+            "configurePreset": "x64-linux-gcc-debug",
+            "jobs": 8
+        },
+        {
+            "name": "x64-linux-gcc-release",
+            "configurePreset": "x64-linux-gcc-release",
+            "jobs": 8
+        },
+        {
+            "name": "arm64-linux-gcc-debug",
+            "configurePreset": "arm64-linux-gcc-debug",
+            "jobs": 8
+        },
+        {
+            "name": "arm64-linux-gcc-release",
+            "configurePreset": "arm64-linux-gcc-release",
+            "jobs": 8
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "x64-linux-clang-debug",
+            "configurePreset": "x64-linux-clang-debug",
+            "output": {
+                "outputOnFailure": true
+            }
+        },
+        {
+            "name": "x64-linux-clang-release",
+            "configurePreset": "x64-linux-clang-release",
+            "output": {
+                "outputOnFailure": true
+            }
+        },
+        {
+            "name": "x64-linux-llvm-coverage",
+            "configurePreset": "x64-linux-llvm-coverage",
+            "output": {
+                "outputOnFailure": true
+            },
+            "environment": {
+                "LLVM_PROFILE_FILE": "${sourceDir}/build/coverage/%m.profraw"
+            }
+        },
+        {
+            "name": "x64-linux-gcc-debug",
+            "configurePreset": "x64-linux-gcc-debug",
+            "output": {
+                "outputOnFailure": true
+            }
+        },
+        {
+            "name": "x64-linux-gcc-release",
+            "configurePreset": "x64-linux-gcc-release",
+            "output": {
+                "outputOnFailure": true
+            }
+        }
+    ]
+}

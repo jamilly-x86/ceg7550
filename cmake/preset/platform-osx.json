@@ -1,0 +1,117 @@
+{
+    "version": 7,
+    "include": [
+        "config-release.json",
+        "host-arm64-osx.json",
+        "host-x64-osx.json",
+        "target-arm64-osx.json",
+        "target-x64-osx.json",
+        "config-debug.json",
+        "config-build-dir.json",
+        "use-clang.json",
+        "use-ninja.json",
+        "use-vcpkg.json"
+    ],
+    "configurePresets": [
+        {
+            "name": "arm64-osx-clang-debug",
+            "inherits": [
+                "host-arm64-osx",
+                "target-arm64-osx",
+                "config-debug",
+                "config-build-dir",
+                "use-clang",
+                "use-ninja",
+                "use-vcpkg"
+            ]
+        },
+        {
+            "name": "arm64-osx-clang-release",
+            "inherits": [
+                "host-arm64-osx",
+                "target-arm64-osx",
+                "config-release",
+                "config-build-dir",
+                "use-clang",
+                "use-ninja",
+                "use-vcpkg"
+            ]
+        },
+        {
+            "name": "x64-osx-clang-debug",
+            "inherits": [
+                "host-x64-osx",
+                "target-x64-osx",
+                "config-debug",
+                "config-build-dir",
+                "use-clang",
+                "use-ninja",
+                "use-vcpkg"
+            ]
+        },
+        {
+            "name": "x64-osx-clang-release",
+            "inherits": [
+                "host-x64-osx",
+                "target-x64-osx",
+                "config-release",
+                "config-build-dir",
+                "use-clang",
+                "use-ninja",
+                "use-vcpkg"
+            ]
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "arm64-osx-clang-debug",
+            "configurePreset": "arm64-osx-clang-debug",
+            "jobs": 8
+        },
+        {
+            "name": "arm64-osx-clang-release",
+            "configurePreset": "arm64-osx-clang-release",
+            "jobs": 8
+        },
+        {
+            "name": "x64-osx-clang-debug",
+            "configurePreset": "x64-osx-clang-debug",
+            "jobs": 8
+        },
+        {
+            "name": "x64-osx-clang-release",
+            "configurePreset": "x64-osx-clang-release",
+            "jobs": 8
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "arm64-osx-clang-debug",
+            "configurePreset": "arm64-osx-clang-debug",
+            "output": {
+                "outputOnFailure": true
+            }
+        },
+        {
+            "name": "arm64-osx-clang-release",
+            "configurePreset": "arm64-osx-clang-release",
+            "output": {
+                "outputOnFailure": true
+            }
+        },
+        {
+            "name": "x64-osx-clang-debug",
+            "configurePreset": "arm64-osx-clang-debug",
+            "output": {
+                "outputOnFailure": true
+            }
+        },
+        {
+            "name": "x64-osx-clang-release",
+            "configurePreset": "arm64-osx-clang-release",
+            "output": {
+                "outputOnFailure": true
+            }
+        }
+    ]
+}
