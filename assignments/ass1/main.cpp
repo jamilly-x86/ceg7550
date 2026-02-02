@@ -19,8 +19,8 @@ auto main() -> int
 	std::ranges::for_each(images,
 						  [&](auto& image)
 						  {
-							  const auto name = std::string(image.get_image_name());
-							  const auto ext = std::string(image.get_image_extension());
+							  const auto name = std::string(image.get_name());
+							  const auto ext = std::string(image.get_extension());
 							  const auto base = "/Users/jamalbrown/src/ceg7550/assignments/ass1/images/";
 
 							  // (1) scale
