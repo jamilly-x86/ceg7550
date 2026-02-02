@@ -93,6 +93,8 @@ export namespace assignments::ass1
 			cv::imwrite(std::string{file_name}, image_);
 		}
 
+		/// @brief Set image file name
+		/// @param image_name Name of the image file.
 		auto set_image_name(std::string_view image_name) -> void
 		{
 			if (image_name_ != image_name)
@@ -101,11 +103,15 @@ export namespace assignments::ass1
 			}
 		}
 
+		/// @brief Get image file name
+		/// @return Image file name represented as a string_view.
 		auto get_image_name() const -> std::string_view
 		{
 			return image_name_;
 		}
 
+		/// @brief Set image file extension
+		/// @param image_extension File extension of the image.
 		auto set_image_extension(std::string_view image_extension) -> void
 		{
 			if (image_extension_ != image_extension)
@@ -114,6 +120,8 @@ export namespace assignments::ass1
 			}
 		}
 
+		/// @brief Get image file extension.
+		/// @return Image file extension represented as a string_view.
 		auto get_image_extension() const -> std::string_view
 		{
 			return image_extension_;
