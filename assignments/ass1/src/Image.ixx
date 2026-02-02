@@ -62,17 +62,29 @@ export namespace assignments::ass1
 		/// @brief Constructs an empty Image.
 		Image() noexcept = default;
 
-		/// @brief Load a grayscale image from disk.
+		/// @brief Read a grayscale image from disk.
 		/// @param file_name Path to the image file.
 		///
 		/// The image is loaded using OpenCV in grayscale mode. If loading fails,
 		/// the internal image remains unchanged.
-		auto load(std::string_view file_name) -> void
+		auto read(std::string_view file_name) -> void
 		{
 			if (const auto image = cv::imread(std::string{file_name}, cv::IMREAD_GRAYSCALE); image.empty() == false)
 			{
 				image_ = image;
 			}
+		}
+
+		/// @brief Writes an image to disk
+		/// @param file_name Path to the image file.
+		auto write(std::string_view file_name) const -> void
+		{
+			if (image_.empty() == true)
+			{
+				return;
+			}
+
+			cv::imwrite(std::string{file_name}, image_);
 		}
 
 		/// @brief Scale the image to the given dimensions.
