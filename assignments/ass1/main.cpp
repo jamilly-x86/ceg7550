@@ -17,7 +17,7 @@ auto main() -> int
 	images.emplace_back(image3);
 
 	std::ranges::for_each(images,
-						  [&](assignments::ass1::Image& image)
+						  [&](auto& image)
 						  {
 							  const auto name = std::string(image.get_image_name());
 							  const auto ext = std::string(image.get_image_extension());
