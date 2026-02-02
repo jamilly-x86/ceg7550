@@ -115,5 +115,55 @@ auto main() -> int
 	image2_72.projection(matrix4);
 	image2_72.write("/Users/jamalbrown/src/ceg7550/assignments/ass1/images/Image2-72.png");
 
+	// IMAGE 3
+	assignments::ass1::Image image3;
+	image3.read("/Users/jamalbrown/src/ceg7550/assignments/ass1/images/Image3.jpg");
+
+	// scale image (1)
+	assignments::ass1::Image image3_1 = image3;
+	image3_1.scale(dimensions);
+	image3_1.write("/Users/jamalbrown/src/ceg7550/assignments/ass1/images/Image3-1.jpg");
+
+	// reflect image (2)
+	assignments::ass1::Image image3_2 = image3;
+	image3_2.reflect(assignments::ass1::Image::Axis::X);
+	image3_2.write("/Users/jamalbrown/src/ceg7550/assignments/ass1/images/Image3-2.jpg");
+
+	// rotate image (3)
+	assignments::ass1::Image image3_3 = image3;
+	image3_3.rotate(rotation_degrees);
+	image3_3.write("/Users/jamalbrown/src/ceg7550/assignments/ass1/images/Image3-3.jpg");
+
+	// shear image (4)
+	assignments::ass1::Image image3_4 = image3;
+	image3_4.shear(assignments::ass1::Image::Axis::X, shear_value);
+	image3_4.write("/Users/jamalbrown/src/ceg7550/assignments/ass1/images/Image3-4.jpg");
+
+	// translate image (5)
+	assignments::ass1::Image image3_5 = image3;
+	image3_5.translate(translation_direction);
+
+	image3_5.rotate(rotation_degrees2);
+	// TODO: implement scale with optional parameter for percent scale
+	image3_5.scale(dimensions2);
+	image3_5.write("/Users/jamalbrown/src/ceg7550/assignments/ass1/images/Image3-5.jpg");
+
+	// project image (affines and homographies) (6 & 7)
+	assignments::ass1::Image image3_61 = image3;
+	image3_61.projection(matrix1);
+	image3_61.write("/Users/jamalbrown/src/ceg7550/assignments/ass1/images/Image3-61.jpg");
+
+	assignments::ass1::Image image3_62 = image3;
+	image3_62.projection(matrix2);
+	image3_62.write("/Users/jamalbrown/src/ceg7550/assignments/ass1/images/Image3-62.jpg");
+
+	assignments::ass1::Image image3_71 = image3;
+	image3_71.projection(matrix3);
+	image3_71.write("/Users/jamalbrown/src/ceg7550/assignments/ass1/images/Image3-71.jpg");
+
+	assignments::ass1::Image image3_72 = image3;
+	image3_72.projection(matrix4);
+	image3_72.write("/Users/jamalbrown/src/ceg7550/assignments/ass1/images/Image3-72.jpg");
+
 	return 0;
 }
