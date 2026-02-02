@@ -8,6 +8,7 @@
 /// inverse-mapping techniques.
 module;
 
+#include <filesystem>
 #include <opencv2/core/mat.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <ranges>
@@ -72,6 +73,11 @@ export namespace assignments::ass1
 			if (const auto image = cv::imread(std::string{file_name}, cv::IMREAD_GRAYSCALE); image.empty() == false)
 			{
 				image_ = image;
+
+				const auto path = std::filesystem::path(file_name);
+
+				set_image_name(path.stem().string());
+				set_image_extension(path.extension().string());
 			}
 		}
 
@@ -85,6 +91,32 @@ export namespace assignments::ass1
 			}
 
 			cv::imwrite(std::string{file_name}, image_);
+		}
+
+		auto set_image_name(std::string_view image_name) -> void
+		{
+			if (image_name_ != image_name)
+			{
+				image_name_ = image_name;
+			}
+		}
+
+		auto get_image_name() const -> std::string_view
+		{
+			return image_name_;
+		}
+
+		auto set_image_extension(std::string_view image_extension) -> void
+		{
+			if (image_extension_ != image_extension)
+			{
+				image_extension_ = image_extension;
+			}
+		}
+
+		auto get_image_extension() const -> std::string_view
+		{
+			return image_extension_;
 		}
 
 		/// @brief Scale the image to the given dimensions.
@@ -467,6 +499,8 @@ export namespace assignments::ass1
 	private:
 		/// Internal OpenCV image storage (grayscale)
 		cv::Mat image_;
+		std::string image_name_;
+		std::string image_extension_;
 		/// Default image height
 		static constexpr auto Height = 1080;
 		/// Default image width
